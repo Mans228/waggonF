@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+  import { createRouter, createWebHistory } from 'vue-router'
 import Register from '@/components/Register.vue'
 import Bremsprotokoll from '@/components/Bremsprotokoll.vue'
 import { useUserStore } from '@/store/user';

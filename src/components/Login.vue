@@ -12,7 +12,10 @@
       </div>
       <button type="submit" @click.prevent="handleSubmit">Sign up</button>
       <button @click.prevent ="checkToken">Check Token</button>
+      <textarea>Not registered?</textarea>
+      <button @click.prevent="register">Register</button>
     </form>
+
   </div>
 </template>
 
@@ -29,6 +32,9 @@ const lastname = ref("");
 const email = ref("");
 const password = ref("");
 const userStore = useUserStore();
+const register = async () =>{
+  router.push('/register')
+}
 
 const handleSubmit = async () => {
   axios.post('http://localhost:8080/api/auth/authenticate', {
