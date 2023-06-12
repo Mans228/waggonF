@@ -155,20 +155,20 @@ import api from "@/api/api";
 const userStore = useUserStore();
 
 const email = ref(userStore.getEmail);
-const wagennummer = ref("");
-const auftragsnummer = ref("");
-const wkz = ref("");
-const halter= ref("");
-const kundenNr = ref("");
-const date = ref("");
-const uic = ref("");
-const brBauArt = ref("");
-const br0= ref(null);
-const br2 = ref(null);
-const br3 = ref(null);
-const funkPr = ref(null);
-const gestaengestellerOk = ref(null);
-const gestaengestellerOkNot = ref(null);
+const wagennummer = ref();
+const auftragsnummer = ref();
+const wkz = ref();
+const halter= ref();
+const kundenNr = ref();
+const date = ref();
+const uic = ref();
+const brBauArt = ref();
+const br0= ref();
+const br2 = ref();
+const br3 = ref();
+const funkPr = ref();
+const gestaengestellerOk = ref();
+const gestaengestellerOkNot = ref();
 const bolzenInOrdnungField = ref();
 const bolzenInOrdnungFieldNot = ref();
 const bremsGestaengeField = ref();
@@ -198,51 +198,56 @@ const dichtheitGeprueftFieldNot = ref();
 
 
 
-const sendData = () =>{
-    const dataPr = ref({
-          wagennummer: wagennummer.value,
-          auftragsnummer: auftragsnummer.value,
-          werkstattkurzzeichen: wkz.value,
-          halterECM: halter.value,
-          kundenauftragnummer: kundenNr.value,
-          date: date.value,
-          uicGattung: uic.value,
-          bremsBauart:brBauArt.value,
-          br0: br0.value,
-          br2: br2.value,
-          br3: br3.value,
-          funktionspruefung: funkPr.value,
-          gestaengestellterInOrdnung: gestaengestellerOk.value,
-          gestaengestellterInOrdnungNot: gestaengestellerOkNot.value,
-          bolzenInOrdnung: bolzenInOrdnungField.value,
-          bolzenInOrdnungNot: bolzenInOrdnungFieldNot.value,
-          bremsgestaengeInOrdnung: bremsGestaengeField.value,
-          bremsgestaengeInOrdnungNot: bremsGestaengeFieldNot.value,
-          bolzenSicherungenGeprueft: bolzenSicherungenField.value,
-          bolzenSicherungenGeprueftNot:bolzenSicherungenFieldNot.value,
-          bremsfangschlingen: bremsFangField.value,
-          bremsfangschlingenNot: bremsFangFieldNot.value,
-          gleitstellenGefettet: gleitstellenGefettetField.value,
-          gleitstellenGefettetNot: gleitstellenGefettetFieldNot.value,
-          klotzUndBelagspiel: klotzBelagspielField.value,
-          klotzUndBelagspielNot: klotzBelagspielFieldNot.value,
-          staerkeBremsKlotzSohlen: staerkeBremsklotzField.value,
-          staerkeBremsKlotzSohlenNot: staerkeBremsklotzFieldNot.value,
-          ziehlscheFeder: ziehlscheFederField.value,
-          ziehlscheFederNot: ziehlscheFederFieldNot.value,
-          druckbehaelterEntw: druckbehaelterEntwaessertField.value,
-          druckbehaelterEntwNot: druckbehaelterEntwaessertFieldNot.value,
-          bremsAnschriften: bremsanschiftenGeprueftField.value,
-          bremsAnschriftenNot: bremsanschiftenGeprueftFieldNot.value,
-          druckBehaelterGeprueft: druckbehaelterGeprueftField.value,
-          druckBehaelterGeprueftNot: druckbehaelterGeprueftFieldNot.value,
-          dichtheitHLUndBremsanlagen: dichtheitGeprueftField.value,
-          dichtheitHLUndBremsanlagenNot: dichtheitGeprueftFieldNot.value,          
-        });
-        console.log(dataPr.value)
-        api.post("http://localhost:8080/home",dataPr);
+const sendData = async () => {
+  const dataPr = {
+    "wagennummer": wagennummer.value,
+    auftragsnummer: auftragsnummer.value,
+    werkstattkurzzeichen: wkz.value,
+    halterECM: halter.value,
+    kundenauftragnummer: kundenNr.value,
+    date: date.value,
+    uicGattung: uic.value,
+    bremsBauart: brBauArt.value,
+    br0: br0.value,
+    br2: br2.value,
+    br3: br3.value,
+    funktionspruefung: funkPr.value,
+    gestaengestellterInOrdnung: gestaengestellerOk.value,
+    gestaengestellterInOrdnungNot: gestaengestellerOkNot.value,
+    bolzenInOrdnung: bolzenInOrdnungField.value,
+    bolzenInOrdnungNot: bolzenInOrdnungFieldNot.value,
+    bremsgestaengeInOrdnung: bremsGestaengeField.value,
+    bremsgestaengeInOrdnungNot: bremsGestaengeFieldNot.value,
+    bolzenSicherungenGeprueft: bolzenSicherungenField.value,
+    bolzenSicherungenGeprueftNot: bolzenSicherungenFieldNot.value,
+    bremsfangschlingen: bremsFangField.value,
+    bremsfangschlingenNot: bremsFangFieldNot.value,
+    gleitstellenGefettet: gleitstellenGefettetField.value,
+    gleitstellenGefettetNot: gleitstellenGefettetFieldNot.value,
+    klotzUndBelagspiel: klotzBelagspielField.value,
+    klotzUndBelagspielNot: klotzBelagspielFieldNot.value,
+    staerkeBremsKlotzSohlen: staerkeBremsklotzField.value,
+    staerkeBremsKlotzSohlenNot: staerkeBremsklotzFieldNot.value,
+    ziehlscheFeder: ziehlscheFederField.value,
+    ziehlscheFederNot: ziehlscheFederFieldNot.value,
+    druckbehaelterEntw: druckbehaelterEntwaessertField.value,
+    druckbehaelterEntwNot: druckbehaelterEntwaessertFieldNot.value,
+    bremsAnschriften: bremsanschiftenGeprueftField.value,
+    bremsAnschriftenNot: bremsanschiftenGeprueftFieldNot.value,
+    druckBehaelterGeprueft: druckbehaelterGeprueftField.value,
+    druckBehaelterGeprueftNot: druckbehaelterGeprueftFieldNot.value,
+    dichtheitHLUndBremsanlagen: dichtheitGeprueftField.value,
+    dichtheitHLUndBremsanlagenNot: dichtheitGeprueftFieldNot.value,
+  };
+  console.log(dataPr)
+  try {
+    const response = await api.post("http://localhost:8080/home", dataPr);
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
 
-    
+
 }
 
 </script>
