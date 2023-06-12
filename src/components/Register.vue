@@ -29,6 +29,7 @@ import axios from 'axios';
 import { ref } from 'vue';
 import router from "@/router";
 import { useUserStore } from '@/store/user';
+import api from "../api/api";
 
 
 
@@ -44,16 +45,16 @@ const handleSubmit = async () => {
     lastname: lastname.value,
     email: email.value,
     password: password.value,
-  }).then(response=>{
+  }).then(userStore.setEmail(email.value)).then(response=>{
     const token = response.data.access_token;
     const refresh_token = response.data.refresh_token;
     localStorage.setItem('token',token)
-    localStorage.setItem('token', refresh_token)
+    localStorage.setItem('refresh_token', refresh_token)
     console.log(token);
     console.log(refresh_token)
     console.log(localStorage.getItem('token'))
-    if (token!==undefined){
-      userStore.setEmail(email)
+    if (ref(token)!==undefined){
+      userStore.setEmail(email.value)
       router.push('/fill')
 
     }

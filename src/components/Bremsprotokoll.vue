@@ -150,6 +150,7 @@
 import axios from "axios";
 import {ref} from "vue";
 import { useUserStore } from '@/store/user';
+import api from "@/api/api";
 
 const userStore = useUserStore();
 
@@ -239,9 +240,8 @@ const sendData = () =>{
           dichtheitHLUndBremsanlagenNot: dichtheitGeprueftFieldNot.value,          
         });
         console.log(dataPr.value)
-    axios.
-    post('https://proto.waggon24.com/demoProtokoll-0.0.1-SNAPSHOT/home',dataPr.value)
-    .then((response) => console.log(response))
+        api.post("http://localhost:8080/home",dataPr);
+
     
 }
 

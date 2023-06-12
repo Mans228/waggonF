@@ -4,7 +4,7 @@ import {ref} from "vue";
 
 export const useUserStore = defineStore('user', {
     state: () => ({
-        email: ref(null),
+        email: "",
     }),
     actions: {
         setEmail(email) {

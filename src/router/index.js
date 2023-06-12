@@ -2,7 +2,7 @@
 import Register from '@/components/Register.vue'
 import Bremsprotokoll from '@/components/Bremsprotokoll.vue'
 import { useUserStore } from '@/store/user';
-import {ref} from "vue";
+import {ref, withScopeId} from "vue";
 import Login from '@/components/Login.vue'
 
 
@@ -30,12 +30,13 @@ const router = createRouter({
 })
 router.beforeEach((to, from, next) => {
   let userStore = useUserStore();
-  let email = ref(userStore.getEmail)
+  let email = userStore.getEmail
 
-  if (email.value==null && to.name !== 'Register'&& to.name!=='Login') {  //if user is not authenticated and er geht nicht zum register
+  if (email==="" && to.name !== 'Register'&& to.name!=='Login') {  //if user is not authenticated and er geht nicht zum register
     return next({path:'login'})// Redirect to the Register page
   } else {
-    console.log(email)
+
+
     return next(); // Proceed with the navigation
   }
 });
