@@ -40,7 +40,7 @@ const password = ref("");
 const userStore = useUserStore();
 
 const handleSubmit = async () => {
-  axios.post('http://localhost:8080/api/auth/register', {
+  axios.post('https://proto.waggon24.com/demoProtokoll-0.0.1-SNAPSHOT/api/auth/register', {  //https://proto.waggon24.com/demoProtokoll-0.0.1-SNAPSHOT/api/auth/register
     firstname: firstname.value,
     lastname: lastname.value,
     email: email.value,

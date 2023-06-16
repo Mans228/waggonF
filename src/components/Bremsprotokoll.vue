@@ -241,7 +241,7 @@ const sendData = async () => {
   };
   console.log(dataPr)
   try {
-    const response = await api.post("http://localhost:8080/home", dataPr);
+    const response = await api.post("/home", dataPr);
     console.log(response.data);
   } catch (error) {
     console.error(error);

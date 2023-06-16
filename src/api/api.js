@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:8080', // Replace with your API base URL
+    baseURL: 'https://proto.waggon24.com/demoProtokoll-0.0.1-SNAPSHOT', // Replace with your API base URL
 });
 
 // Add request interceptor
