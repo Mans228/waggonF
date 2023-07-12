@@ -37,7 +37,7 @@ const register = async () =>{
 }
 
 const handleSubmit = async () => {
-  axios.post('https://proto.waggon24.com/demoProtokoll-0.0.1-SNAPSHOT/api/auth/authenticate', {  // https://proto.waggon24.com/demoProtokoll-0.0.1-SNAPSHOT/api/auth/authenticate
+  axios.post('http://localhost:8080/api/auth/authenticate', {  // https://proto.waggon24.com/demoProtokoll-0.0.1-SNAPSHOT/api/auth/authenticate
     email: email.value,
     password: password.value,
   }).then(response=>{

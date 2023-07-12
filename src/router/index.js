@@ -32,7 +32,7 @@ router.beforeEach((to, from, next) => {
   let userStore = useUserStore();
   let email = userStore.getEmail
 
-  if (email==="" && to.name !== 'Register'&& to.name!=='Login') {  //if user is not authenticated and er geht nicht zum register
+  if (email===" " && to.name !== 'Register'&& to.name!=='Login') {  //if user is not authenticated and er geht nicht zum register
     return next({path:'login'})// Redirect to the Register page
   } else {
 
